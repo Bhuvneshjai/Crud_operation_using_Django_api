@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # API CREATION
 ### Create a Django Project
 ###### ---> django admin startproject my_project_api
