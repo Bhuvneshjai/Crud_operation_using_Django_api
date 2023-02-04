@@ -23,37 +23,38 @@
 ### In 'products_listing/serializers.py' file
 ###### ---> from rest_framework import serializers
 ###### ---> from products_listing.models import Product
-###### ---> class ProductSerializer(serializers.HyperlinkedModelSerializer):
+###### ---> class ProductSerializer(serializers.ModelSerializer):
 ###### --->     ###### ---> class Meta:
 ###### --->     ###### --->     ###### ---> model = Product
 ###### --->     ###### --->     ###### ---> fields = "__all__"
 ### In 'products_listing/views.py' file
 ###### ---> from django.shortcuts import render
-###### ---> from rest_framework import viewsets
+###### ---> from rest_framework import viewsets, generics
 ###### ---> from products_listing.models import Product
 ###### ---> from products_listing.serializers import ProductSerializer
 ###### ---> # Create your views here.
-###### ---> class ProductViewSet(viewsets.ModelViewSet):
+###### ---> class ProductViewSetList(generics.ListCreateAPIView):
+###### --->     ###### ---> queryset = Product.objects.all()
+###### --->     ###### ---> serializer_class = ProductSerializer
+###### ---> class ProductViewSetDetail(generics.RetrieveUpdateDestroyAPIView):
 ###### --->     ###### ---> queryset = Product.objects.all()
 ###### --->     ###### ---> serializer_class = ProductSerializer
 ### In 'products_listing/urls.py' file
-###### ---> from django. contrib import admin
-###### ---> from django.urls import path, include
-###### ---> from products_listing.views import ProductViewSet
-###### ---> from rest_framework import routers
-###### ---> router = routers.DefaultRouter()
-###### ---> router.register(r'products', ProductViewSet)
+###### ---> from django.urls import path
+###### ---> from products_listing.views import ProductViewSetDetail, ProductViewSetList
+
 ###### ---> urlpatterns = [
-###### --->     ###### ---> path('',include(router.urls))
+###### --->     ###### ---> path('products/',ProductViewSetList.as_view()),
+###### --->     ###### ---> path('products/<int:pk>/', ProductViewSetDetail.as_view())
 ###### ---> ]
 ### In 'my_project_api/urls.py' file
 ###### ---> from django.contrib import admin
 ###### ---> from django.urls import path,include
-
+###### ---> 
 ###### ---> urlpatterns = [
-###### --->     ###### ---> path('admin/', admin.site.urls),
-###### --->     ###### ---> path('api/product/', include('products_listing.urls'))
+###### --->    ###### --->  path('admin/', admin.site.urls),
+###### --->    ###### --->  path('api/', include('products_listing.urls'))
 ###### ---> ]
 ### Start the development server and test the api by visiting 
-###### ---> 'https://localhost:8000/api/product/products/'
+###### ---> 'https://localhost:8000/api/products/'
 ###### ---> python manage.py runserver
