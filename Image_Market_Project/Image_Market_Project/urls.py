@@ -18,9 +18,12 @@ from django.urls import path
 from Image_Market_Project.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about',show_about_page),
-    path('',show_home_page)
+    path('about/',show_about_page),
+    path('home/',show_home_page),
+    path('',home),
+    path('category/<int:cid>/',show_category_page),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
