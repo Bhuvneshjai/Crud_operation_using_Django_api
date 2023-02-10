@@ -1,4 +1,4 @@
-# Prabhi-Vision Project
+# Prabhi-Vision (website name)
 ## This website using Django framework with the specified requirements.
 ### follow these steps:
 
