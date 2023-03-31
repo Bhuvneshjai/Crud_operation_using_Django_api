@@ -1,27 +1,27 @@
 # CRUD OPERATION USING DJANGO API (REST API)
-Django is a popular web framework for building web applications, and it provides a built-in ORM (Object-Relational Mapping) for performing CRUD (Create, Read, Update, Delete) operations on the database.
+## Django is a popular web framework for building web applications, and it provides a built-in ORM (Object-Relational Mapping) for performing CRUD (Create, Read, Update, Delete) operations on the database.
 
-## Here are the steps to create a Django API for performing CRUD operations:
+### Here are the steps to create a Django API for performing CRUD operations:
 
-### Create a new Django project and app using the command line:
-# ---> $ django-admin startproject project_name
-# ---> $ cd project_name
-# ---> $ python manage.py startapp app_name
-### Define the models in the app's models.py file using Django's ORM. For example:
-# ---> from django.db import models
+#### Create a new Django project and app using the command line:
+#####---> $ django-admin startproject project_name
+---> $ cd project_name
+---> $ python manage.py startapp app_name
+#### Define the models in the app's models.py file using Django's ORM. For example:
+---> from django.db import models
 
-# ---> class Book(models.Model):
-# ------>    title = models.CharField(max_length=200)
-# ------>    author = models.CharField(max_length=200)
-# ------>    published_date = models.DateField()
+---> class Book(models.Model):
+------>    title = models.CharField(max_length=200)
+------>    author = models.CharField(max_length=200)
+------>    published_date = models.DateField()
 
-# ------>    def __str__(self):
-# --------->        return self.title
-### Create serializers in the app's serializers.py file to convert the model instances to JSON format. For example:
-# ---> from rest_framework import serializers
-# ---> from .models import Book
+------>    def __str__(self):
+---------        return self.title
+#### Create serializers in the app's serializers.py file to convert the model instances to JSON format. For example:
+---> from rest_framework import serializers
+---> from .models import Book
 
-# ---> class BookSerializer(serializers.ModelSerializer):
+---> class BookSerializer(serializers.ModelSerializer):
 ------>    class Meta:
 ------>        model = Book
 ------>        fields = ('id', 'title', 'author', 'published_date')
