@@ -1,10 +1,8 @@
 # CRUD OPERATION USING DJANGO API (REST API)
-## Django is a popular web framework for building web applications, and it provides a built-in ORM (Object-Relational Mapping) for performing CRUD (Create, Read, Update, Delete) operations on the database.
-
 ### Here are the steps to create a Django API for performing CRUD operations:
 
-#### Create a new Django project and app using the command line:
-#####---> $ django-admin startproject project_name
+### Create a new Django project and app using the command line:
+##### ---> $ django-admin startproject project_name
 ---> $ cd project_name
 ---> $ python manage.py startapp app_name
 #### Define the models in the app's models.py file using Django's ORM. For example:
